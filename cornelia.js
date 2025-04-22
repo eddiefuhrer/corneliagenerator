@@ -86,3 +86,5 @@ function generatePrompts() {
 
     output.innerHTML = html;
 }
+
+document.getElementById("generateBtn").addEventListener("click", generatePrompts);
