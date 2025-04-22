@@ -1,4 +1,3 @@
-
 const prompts = [
     {
         title: "The Other Side",
