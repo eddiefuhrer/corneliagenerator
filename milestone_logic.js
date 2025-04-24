@@ -1,6 +1,6 @@
 const milestones = [
   {
-    "title": "Milestone 1: The First Spark",
+    "title": "Milestone: The First Spark",
     "text": "A fire breaks out in the supply hold. Both sides accuse each other.",
     "options": {
       "SHIP": "Blame the town's scouts for infiltration.",
@@ -11,7 +11,7 @@ const milestones = [
     "token_effect": "Spend 1 token to find a burnt object that reveals a clue."
   },
   {
-    "title": "Milestone 2: The Broken Bridge",
+    "title": "Milestone: The Broken Bridge",
     "text": "The only working passage between ship and island collapses.",
     "options": {
       "SHIP": "Secure the ship from potential raids.",
@@ -22,7 +22,7 @@ const milestones = [
     "token_effect": "Spend 1 token to discover who last used the bridge."
   },
   {
-    "title": "Milestone 3: Elmer\u2019s Fall",
+    "title": "Milestone: Elmer\u2019s Fall",
     "text": "Elmer is found missing. Rumors spread fast.",
     "options": {
       "SHIP": "Assume he betrayed the crew and fled.",
@@ -33,7 +33,7 @@ const milestones = [
     "token_effect": "Spend 1 token to learn what he left behind in secret."
   },
   {
-    "title": "Milestone 4: Anna\u2019s Letter",
+    "title": "Milestone: Anna\u2019s Letter",
     "text": "A torn-up letter in Anna\u2019s handwriting is found in the town square.",
     "options": {
       "SHIP": "Say it\u2019s forged to incite unrest.",
@@ -44,7 +44,7 @@ const milestones = [
     "token_effect": "Spend 1 token to reconstruct what the full letter said."
   },
   {
-    "title": "Milestone 5: The Fog Shifts",
+    "title": "Milestone: The Fog Shifts",
     "text": "For the first time in weeks, the fog briefly clears.",
     "options": {
       "SHIP": "Use it to launch a patrol mission.",
