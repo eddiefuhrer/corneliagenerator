@@ -1,3 +1,4 @@
+
 const prompts = [
     {
         title: "The Other Side",
@@ -31,60 +32,32 @@ const prompts = [
             INNOVATION: "You pass it anonymously to a student."
         },
         token_effect: "Spend 1 token to read the full contents."
-    },
-    {
-        title: "The Quiet Meeting",
-        text: "Two figures from opposite sides speak in secret. You see it happen.",
-        options: {
-            SHIP: "You report them.",
-            TOWN: "You ask to join them.",
-            TRADITION: "You warn them the old ways never forgive betrayal.",
-            INNOVATION: "You offer to pass messages."
-        },
-        token_effect: "Spend 1 token to learn what they were trading."
-    },
-    {
-        title: "A Voice in the Fog",
-        text: "You hear someone call your name while the fog rolls in. No one is there.",
-        options: {
-            SHIP: "You assume it’s a trick and tell the guard.",
-            TOWN: "You follow the voice.",
-            TRADITION: "You mark the place and return nightly.",
-            INNOVATION: "You tell others. It might mean something."
-        },
-        token_effect: "Spend 1 token to find a buried artifact in the mist."
     }
 ];
 
-const milestones = [
-    "Milestone 1: The First Spark - A fire breaks out in one of the lower decks. The town is blamed—no proof, just fear.",
-    "Milestone 2: The Visit - Two town leaders arrive aboard the ship under a flag of peace. Captain Flanagan refuses to meet them.",
-    "Milestone 3: Elmer’s Fall - During the night, Elmer falls overboard. His body is never recovered. No one takes credit. Everyone takes sides."
-];
+let currentIndex = 0;
+let shuffledPrompts = prompts.sort(() => 0.5 - Math.random());
 
-function generatePrompts() {
-    const output = document.getElementById('output');
-    output.innerHTML = '';
+function showNextPrompt() {
+    const output = document.getElementById("output");
+    const counter = document.getElementById("promptCounter");
 
-    const selectedPrompts = prompts.sort(() => 0.5 - Math.random()).slice(0, 3);
-    const selectedMilestones = milestones.sort(() => 0.5 - Math.random()).slice(0, 2);
-
-    let html = '<h2>Prompts</h2>';
-    selectedPrompts.forEach((p, i) => {
-        html += `<h4>${i + 1}. ${p.title}</h4><p>${p.text}</p><ul>`;
+    if (currentIndex < shuffledPrompts.length) {
+        const p = shuffledPrompts[currentIndex];
+        let html = `<h2>${p.title}</h2><p>${p.text}</p><ul>`;
         for (const [key, val] of Object.entries(p.options)) {
             html += `<li><strong>${key}:</strong> ${val}</li>`;
         }
         html += `</ul><p><em>Token Effect:</em> ${p.token_effect}</p>`;
-    });
-
-    html += '<h2>Milestones</h2><ul>';
-    selectedMilestones.forEach(m => {
-        html += `<li>${m}</li>`;
-    });
-    html += '</ul>';
-
-    output.innerHTML = html;
+        output.innerHTML = html;
+        counter.innerText = `Prompt ${currentIndex + 1} of ${shuffledPrompts.length}`;
+        currentIndex++;
+    } else {
+        output.innerHTML = "<p><strong>No more prompts to draw.</strong></p>";
+        counter.innerText = "";
+    }
 }
 
-document.getElementById("generateBtn").addEventListener("click", generatePrompts);
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("nextPromptBtn").addEventListener("click", showNextPrompt);
+});
