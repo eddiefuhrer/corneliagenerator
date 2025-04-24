@@ -2,13 +2,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const normalDeck = [...prompts].sort(() => 0.5 - Math.random());
   const milestoneDeck = [...milestones].sort(() => 0.5 - Math.random());
+  const output = document.getElementById("output");
 
   let promptIndex = 0;
   let milestoneIndex = 0;
 
-  const output = document.getElementById("output");
   const promptBtn = document.getElementById("nextPromptBtn");
   const milestoneBtn = document.getElementById("nextMilestoneBtn");
+  const finalBtn = document.getElementById("finalConfrontationBtn");
 
   function showCard(card) {
     let html = `<h2>${card.title}</h2><p>${card.text}</p><ul>`;
@@ -35,5 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       output.innerHTML = "<p><strong>No more milestone prompts to draw.</strong></p>";
     }
+  });
+
+  finalBtn.addEventListener("click", () => {
+    showCard(finalConfrontationCard);
   });
 });
