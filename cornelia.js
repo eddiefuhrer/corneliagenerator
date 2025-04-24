@@ -1,28 +1,39 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  const finalDeck = drawDeckWithMilestones(prompts, milestones);
-  let currentIndex = 0;
+  const normalDeck = [...prompts].sort(() => 0.5 - Math.random());
+  const milestoneDeck = [...milestones].sort(() => 0.5 - Math.random());
+
+  let promptIndex = 0;
+  let milestoneIndex = 0;
 
   const output = document.getElementById("output");
-  const counter = document.getElementById("promptCounter");
-  const button = document.getElementById("nextPromptBtn");
+  const promptBtn = document.getElementById("nextPromptBtn");
+  const milestoneBtn = document.getElementById("nextMilestoneBtn");
 
-  function showNextPrompt() {
-    if (currentIndex < finalDeck.length) {
-      const p = finalDeck[currentIndex];
-      let html = `<h2>${p.title}</h2><p>${p.text}</p><ul>`;
-      for (const [key, val] of Object.entries(p.options)) {
-        html += `<li><strong>${key}:</strong> ${val}</li>`;
-      }
-      html += `</ul><p><em>Token Effect:</em> ${p.token_effect}</p>`;
-      output.innerHTML = html;
-      counter.innerText = `Card ${currentIndex + 1} of ${finalDeck.length}`;
-      currentIndex++;
-    } else {
-      output.innerHTML = "<p><strong>No more prompts to draw.</strong></p>";
-      counter.innerText = "";
+  function showCard(card) {
+    let html = `<h2>${card.title}</h2><p>${card.text}</p><ul>`;
+    for (const [key, val] of Object.entries(card.options)) {
+      html += `<li><strong>${key}:</strong> ${val}</li>`;
     }
+    html += `</ul><p><em>Token Effect:</em> ${card.token_effect}</p>`;
+    output.innerHTML = html;
   }
 
-  button.addEventListener("click", showNextPrompt);
+  promptBtn.addEventListener("click", () => {
+    if (promptIndex < normalDeck.length) {
+      showCard(normalDeck[promptIndex]);
+      promptIndex++;
+    } else {
+      output.innerHTML = "<p><strong>No more standard prompts to draw.</strong></p>";
+    }
+  });
+
+  milestoneBtn.addEventListener("click", () => {
+    if (milestoneIndex < milestoneDeck.length) {
+      showCard(milestoneDeck[milestoneIndex]);
+      milestoneIndex++;
+    } else {
+      output.innerHTML = "<p><strong>No more milestone prompts to draw.</strong></p>";
+    }
+  });
 });
