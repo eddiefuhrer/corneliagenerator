@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  finalConfrontationBtn.addEventListener("click", () => {
+  showCard(finalConfrontation);
+});
+
   finalBtn.addEventListener("click", () => {
     showCard(finalConfrontationCard);
   });
