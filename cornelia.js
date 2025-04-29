@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  const normalDeck = [...prompts].sort(() => 0.5 - Math.random());
-  const milestoneDeck = [...milestones].sort(() => 0.5 - Math.random());
+  const normalDeck = [...prompts];        // keep prompts in the order you wrote
+  const milestoneDeck = [...milestones];  // keep milestones in the order you wrote
   const output = document.getElementById("output");
 
   let promptIndex = 0;
