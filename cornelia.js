@@ -11,15 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const milestoneBtn = document.getElementById("nextMilestoneBtn");
   const finalBtn = document.getElementById("finalConfrontationBtn");
 
-  function showCard(card) {
-    let html = `<h2>${card.title}</h2><p>${card.text}</p><ul>`;
+ function showCard(card) {
+  let html = `<h2>${card.title}</h2><p>${card.text}</p>`;
+
+  if (card.options) {
+    html += `<ul>`;
     for (const [key, val] of Object.entries(card.options)) {
       html += `<li><strong>${key}:</strong> ${val}</li>`;
     }
-    html += `</ul><p><em>Token Effect:</em> ${card.token_effect}</p>`;
-    output.innerHTML = html;
+    html += `</ul>`;
   }
 
+  if (card.token_effect) {
+    html += `<p><em>Token Effect:</em> ${card.token_effect}</p>`;
+  }
+
+  output.innerHTML = html;
+}
   promptBtn.addEventListener("click", () => {
     if (promptIndex < normalDeck.length) {
       showCard(normalDeck[promptIndex]);
