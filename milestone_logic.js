@@ -20,6 +20,12 @@ const milestones = [
   }
 ];
 
+const finalConfrontation = {
+  title: "Final Confrontation: The Divide",
+  text: "The fog parts. The ship and town stand at the edge of war. The choices you've made bring everyone to this moment. Tally all reputation scores. Add up the coordinates of each player token to find the median location. Resolve one of four endings based on group alignment."
+};
+
+
 // Track milestone progress
 let milestoneIndex = 0;
 
